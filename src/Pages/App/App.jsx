@@ -8,7 +8,7 @@ import Navbar from '../../Components/Navbar/navbar';
 
 function App() {
 
-  const [user, setUser]= useState(3)
+  const [user, setUser]= useState(null)
 
 
   return (

@@ -1,13 +1,14 @@
 import SignUpForm from "../../Components/SignUpForm/SignUpForm"
 
-export default function AuthPage111() {
+export default function AuthPage({setUser}) {
     return(
         <div>
         <h1>AuthPage</h1>
 
 
         <div>
-            <SignUpForm/>
+            <SignUpForm
+            setUser = {setUser}/>
         </div>
 
         </div>

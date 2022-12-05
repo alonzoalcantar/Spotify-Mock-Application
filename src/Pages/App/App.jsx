@@ -28,7 +28,8 @@ function App() {
         </Routes>
         </>
         : 
-        <AuthPage/>
+        <AuthPage
+        setUser = {setUser}/>
 }
       </header>
       <div>

@@ -6,7 +6,7 @@ export async function signUp(userData) {
   // module.
   const token = await usersAPI.signUp(userData);
   localStorage.setItem('token', token);
-
+    return getUser()
 }
 
 
@@ -28,5 +28,9 @@ export function getToken() {
 export function getUser() {
     const token = getToken();
     return token ? JSON.parse(atob(token.split('.')[1])).user : null;
-    
+
+}
+
+export function logOut() {
+    localStorage.removeItem('token');
 }

@@ -1,3 +1,4 @@
+import LogInForm from "../../Components/LogInForm/LogInForm"
 import SignUpForm from "../../Components/SignUpForm/SignUpForm"
 
 export default function AuthPage({setUser}) {
@@ -9,6 +10,11 @@ export default function AuthPage({setUser}) {
         <div>
             <SignUpForm
             setUser = {setUser}/>
+        </div>
+
+        <div>
+            <LogInForm
+            setUser={setUser}/>
         </div>
 
         </div>

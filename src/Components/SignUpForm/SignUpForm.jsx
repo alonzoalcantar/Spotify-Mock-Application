@@ -23,8 +23,9 @@ export default class SignUpForm extends Component {
       // Baby step:
       this.props.setUser(user)
 
-    } catch {
+    } catch(err) {
       // Invalid signup
+
       this.setState({
         error: 'Sign Up Failed - Try Again'
       });

@@ -49,7 +49,7 @@ module.exports = {
 
 
   function checkToken(req, res){
-    console.log('req.user', req.user);
+    console.log(req.user);
     res.json(req.exp);
   }
 

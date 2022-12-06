@@ -22,6 +22,7 @@ function App() {
         user = {user}
         setUser = {setUser}/> 
         <Routes>
+          <Route path='/' element={<Home/>}/>
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/home' element={<Home/>}/> 
           <Route path='/authpage' element={<AuthPage/>}/>

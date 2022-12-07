@@ -34,12 +34,33 @@ app.use('/api/users', require('./routes/api/users'));
 
 //Spotify Log In Route
 
+
+//Creates Random String 
+const generateRandomString = length => {
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for(let i = 0; i < length; i++){
+        text+= possible.charAt(Math.floor(Math.random()* possible.length))
+}
+return text
+};
+
+const spotifyState = 'spotify_auth_state';
+
 app.get('/login', (req,res) => {
+    //Setting cookie with spotify state from random string
+
+    const state = generateRandomString(16)
+    res.cookie(spotifyState, state);
+
+    const scope = 'user-read-private user-read-email';
 
     const queryParams = querystring.stringify({
     client_id: CLIENT_ID,
     response_type: 'code',
     redirect_uri: REDIRECT_URI,
+    state: state,
+    scope: scope
 })
 
     res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);

@@ -4,6 +4,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const querystring = require('querystring');
 const axios = require('axios');
+const { error } = require('console');
 
 
 
@@ -91,8 +92,21 @@ app.get('/callback', (req,res) => {
     //AXIOS is promise based, chain a then and a catch to handle resolving the returned promise 
     .then(response => {
         if (response.status === 200) {
-        res.send(`<pre>${JSON.stringify(response.data, null, 2)}
-        </pre>`);
+
+            const {access_token, token_type} = response.data;
+
+            axios.get('https://api.spotify.com/v1/me', {
+                headers: {
+                    Authorization: `${token_type} ${access_token}`
+                }
+            })
+            .then(response => {
+                res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);   
+            })
+            .catch(error => {
+                res.send(error);
+            });
+            
     } else {
         res.send(response);
     }

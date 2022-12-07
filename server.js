@@ -50,7 +50,9 @@ return text
 
 const spotifyState = 'spotify_auth_state';
 
-app.get('/login', (req,res) => {
+//Request Authorization
+
+app.get('/login2spotify', (req,res) => {
     //Setting cookie with spotify state from random string
 
     const state = generateRandomString(16)
@@ -68,6 +70,8 @@ app.get('/login', (req,res) => {
 
     res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
 })
+
+//Use Authcode to request access token
 
 app.get('/callback', (req,res) => {
     
@@ -93,22 +97,18 @@ app.get('/callback', (req,res) => {
     .then(response => {
         if (response.status === 200) {
 
-            const {access_token, token_type} = response.data;
+            const {access_token, refresh_token} = response.data;
 
-            axios.get('https://api.spotify.com/v1/me', {
-                headers: {
-                    Authorization: `${token_type} ${access_token}`
-                }
+            const queryParams = querystring.stringify({
+                access_token,
+                refresh_token
             })
-            .then(response => {
-                res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);   
-            })
-            .catch(error => {
-                res.send(error);
-            });
 
+            // Redirect to REACT APP
+
+            res.redirect(`http://localhost:3000/?${queryParams}`)
     } else {
-        res.send(response);
+        res.redirect(`/?${querystring.stringify({ error: 'invalid_token'})}`);
     }
 })
     .catch(error => {
@@ -117,7 +117,7 @@ app.get('/callback', (req,res) => {
 
 })
 
-//Refresh Authorizatrion token
+//Refresh Authorizatrion token once current session token expires
 app.get('/refresh_token',(req,res) => {
     const {refresh_token} = req.query;
 

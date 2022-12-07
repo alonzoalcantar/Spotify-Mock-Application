@@ -23,7 +23,7 @@ function App() {
         user = {user}
         setUser = {setUser}/> 
         <Routes>
-          {/* <Route path='/login2spotify' element={<SpotifyLogInForm/>}/> */}
+          <Route path='/login2spotify' element={<SpotifyLogInForm/>}/>
           <Route path='/' element={<Home/>}/>
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/home' element={<Home/>}/> 

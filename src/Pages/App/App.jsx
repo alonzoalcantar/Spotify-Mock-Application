@@ -5,6 +5,7 @@ import AuthPage from '../AuthPage/AuthPage'
 import Home from '../../Components/Home/home'
 import Profile from '../../Components/Profile/profile'
 import Navbar from '../../Components/Navbar/navbar';
+import SpotifyLogInForm from '../../Components/SpotifyLogIn/SpotifyLogInForm';
 
 
 
@@ -22,6 +23,7 @@ function App() {
         user = {user}
         setUser = {setUser}/> 
         <Routes>
+          {/* <Route path='/login2spotify' element={<SpotifyLogInForm/>}/> */}
           <Route path='/' element={<Home/>}/>
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/home' element={<Home/>}/> 

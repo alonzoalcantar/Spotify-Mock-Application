@@ -4,7 +4,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const querystring = require('querystring');
 const axios = require('axios');
-const { error } = require('console');
+
 
 
 
@@ -106,7 +106,7 @@ app.get('/callback', (req,res) => {
             .catch(error => {
                 res.send(error);
             });
-            
+
     } else {
         res.send(response);
     }
@@ -116,6 +116,31 @@ app.get('/callback', (req,res) => {
     });
 
 })
+
+//Refresh Authorizatrion token
+app.get('/refresh_token',(req,res) => {
+    const {refresh_token} = req.query;
+
+
+    axios({
+        method: 'POST',
+        url: 'https://accounts.spotify.com/api/token',
+        data: querystring.stringify({
+            grant_type: 'refresh_token',
+            refresh_token: refresh_token
+        }),
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
+        },
+    })
+    .then(response => {
+        res.send(response.data);
+    })
+    .catch(error => {
+        res.send(error);
+    });
+} );
 
 
 // "catch-all" route that will match all GET requests

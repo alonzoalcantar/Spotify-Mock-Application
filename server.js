@@ -3,6 +3,8 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const querystring = require('querystring');
+const axios = require('axios');
+
 
 
 require('dotenv').config();
@@ -66,7 +68,40 @@ app.get('/login', (req,res) => {
     res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
 })
 
+app.get('/callback', (req,res) => {
+    
+    //code is the value of the authorization code 
+    const code = req.query.code || null ;
 
+    axios({
+        
+        method: 'POST',
+        url: 'https://accounts.spotify.com/api/token',
+        data: querystring.stringify({
+            grant_type: 'authorization_code',
+            code: code ,
+            redirect_uri: REDIRECT_URI
+        }),
+
+        headers: {
+            'Content-Type' : 'application/x-www-form-urlencoded',
+            Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
+        },
+    })
+    //AXIOS is promise based, chain a then and a catch to handle resolving the returned promise 
+    .then(response => {
+        if (response.status === 200) {
+        res.send(`<pre>${JSON.stringify(response.data, null, 2)}
+        </pre>`);
+    } else {
+        res.send(response);
+    }
+})
+    .catch(error => {
+        res.send(error);
+    });
+
+})
 
 
 // "catch-all" route that will match all GET requests

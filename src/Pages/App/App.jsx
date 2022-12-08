@@ -5,9 +5,9 @@ import AuthPage from '../AuthPage/AuthPage'
 import Home from '../../Components/Home/home'
 import Profile from '../../Components/Profile/profile'
 import Navbar from '../../Components/Navbar/navbar';
-import SpotifyLogInForm from '../../Components/SpotifyLogIn/SpotifyLogInForm';
+// import SpotifyLogInForm from '../../Components/SpotifyLogIn/SpotifyLogInForm';
 
-import {accessToken} from '../../Spotify/Spotify'
+import {accessToken, spotifyLogOut } from '../../Spotify/Spotify'
 
 
 
@@ -60,7 +60,10 @@ function App() {
             Log In to Spotify
         </a> 
         ) : (
+          <div>
           <h1>Logged In</h1>
+          <button onClick={spotifyLogOut}>Log Out of Spotify</button>
+          </div>
         )}
         </div>
 

@@ -1,14 +1,12 @@
-import { checkToken } from "../../utilities/users-service"
+
 import { useState, useEffect } from "react";
 import { spotifyProfile } from "../../Spotify/Spotify";
-import './profile.css'
+import { StyledHeader} from "./profilestyles";
+
 
 export default function Profile() {
     
-    async function handleCheckToken() {
-    const expDate = await checkToken();
-    console.log(expDate);
-}
+
     //Spotify Profile 
     const [profile, setProfile] = useState(null);
     
@@ -30,26 +28,27 @@ export default function Profile() {
     
 
     return (
-    <div className="profile">
-        
-        <header className="header">
-        <h1>Profile Page</h1>
-        <button onClick={handleCheckToken}>Check When Log In Token Expires</button>
-        </header>
-
-
-        {profile && (
-        <div>
-            <h1>{profile.display_name}</h1>
-            
-            <p>Followers: {profile.followers.total} </p>
-            
-            {profile.images.length && profile.images[0].url && (
-            <img src = {profile.images[0].url} alt = 'profile_picture'/>
-            )}
-        </div>
-        )}
-        
-    </div>
-    )
-}
+        <>
+          {profile && (
+            <>
+              <StyledHeader type="user">
+                <div className="header_inner">
+                  {profile.images.length && profile.images[0].url && (
+                    <img className="header_img" src={profile.images[0].url} alt="profile_image"/>
+                  )}
+                  <div>
+                    <div className="header_overline">Profile</div>
+                    <h1 className="header_name">{profile.display_name}</h1>
+                    <p className="header_meta">
+                      <span>
+                        {profile.followers.total} Follower{profile.followers.total !== 1 ? 's' : ''}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </StyledHeader>
+            </>
+          )}
+        </>
+      )
+    };

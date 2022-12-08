@@ -7,7 +7,7 @@ import Profile from '../../Components/Profile/profile'
 import Navbar from '../../Components/Navbar/navbar';
 // import SpotifyLogInForm from '../../Components/SpotifyLogIn/SpotifyLogInForm';
 
-import {accessToken, spotifyLogOut } from '../../Spotify/Spotify'
+import {accessToken, spotifyLogOut, spotifyProfile} from '../../Spotify/Spotify'
 
 
 
@@ -17,11 +17,33 @@ function App() {
   
   //Spotify Token
   const [token, setToken] = useState(null)
+
+  //Spotify Profile 
+  const [profile, setProfile] = useState(null);
   
   
   
   useEffect(() => {
-    setToken(accessToken)
+    setToken(accessToken);
+
+
+    const returnProfileData = async () => {
+      try {
+
+        const {data} = await spotifyProfile();
+        setProfile(data);
+
+        console.log(data)
+
+    } catch (err) {
+
+      console.error(err);
+
+    }
+  }
+
+  returnProfileData();
+
   }, []);
 
 

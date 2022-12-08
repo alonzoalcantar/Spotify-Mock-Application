@@ -61,7 +61,7 @@ function App() {
         </a> 
         ) : (
           <div>
-          <h1>Logged In</h1>
+          <h1>Logged In</h1> 
           <button onClick={spotifyLogOut}>Log Out of Spotify</button>
           </div>
         )}

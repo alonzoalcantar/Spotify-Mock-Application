@@ -116,5 +116,18 @@ return LOCALSTORAGE_VALUES.accessToken;
 export const accessToken = SpotifyAccessToken()
 
 
+//Globally define AXIOS defaults 
+
+axios.defaults.baseURL = 'https://api.spotify.com/v1';
+axios.defaults.headers['Authorization'] = `Bearer ${accessToken}`;
+axios.defaults.headers['Content-Type'] = 'application/json';
+
+//Return logged in users profile 
+
+export const spotifyProfile = () => axios.get('/me');
+
+
+
+
 
 

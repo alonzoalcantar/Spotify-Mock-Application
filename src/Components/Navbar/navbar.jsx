@@ -15,7 +15,7 @@ export default function Navbar({user, setUser}){
         <nav>
             <Link to='/home'>Home</Link>
             &nbsp; | &nbsp;
-            <Link to='/login2spotify'>Spotify LogIn</Link>
+            <Link to='/spotify'>Spotify LogIn</Link>
             &nbsp; | &nbsp;
             <Link to='/profile'>Profile</Link>
             &nbsp; | &nbsp;

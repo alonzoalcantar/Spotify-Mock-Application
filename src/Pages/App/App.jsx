@@ -85,6 +85,16 @@ function App() {
           <div>
           <h1>Logged In</h1> 
           <button onClick={spotifyLogOut}>Log Out of Spotify</button>
+
+          {profile && (
+            <div>
+            <h1>{profile.display_name}</h1>
+            <p>Followers: {profile.followers.total} </p>
+            {profile.images.length && profile.images[0].url && (
+              <img src = {profile.images[0].url} alt = 'profile_picture'/>
+            )}
+            </div>
+          )}
           </div>
         )}
         </div>

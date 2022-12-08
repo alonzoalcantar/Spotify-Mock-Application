@@ -1,6 +1,7 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
+import { GlobalStyle } from '../../Components/Style/globalstyle';
 import AuthPage from '../AuthPage/AuthPage'
 import Home from '../../Components/Home/home'
 import Profile from '../../Components/Profile/profile'
@@ -12,6 +13,15 @@ import Playlists from '../../Components/SpotifyData/Playlists';
 
 
 
+// function ScrollToTop() {
+//   const {pathname} = useLocation();
+
+//   useEffect(() => {
+//     window.scrollTo(0,0);
+//   },[pathname]);
+//   return null
+// }
+
 
 function App() {
   //Application User
@@ -20,6 +30,7 @@ function App() {
 
   return (
     <div className="App">
+      <GlobalStyle/>
       <header className="App-header">
         { user ?
         <>
@@ -27,6 +38,7 @@ function App() {
         user = {user}
         setUser = {setUser}/> 
         <Routes>
+
           {/* <Route path='/spotify' element={<SpotifyLogInForm/>}/> */}
           <Route path='/' element={<Home />}/>
           <Route path='/profile' element={<Profile/>}/>

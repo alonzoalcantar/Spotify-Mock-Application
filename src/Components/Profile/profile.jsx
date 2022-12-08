@@ -1,6 +1,7 @@
 import { checkToken } from "../../utilities/users-service"
 import { useState, useEffect } from "react";
 import { spotifyProfile } from "../../Spotify/Spotify";
+import './profile.css'
 
 export default function Profile() {
     
@@ -29,8 +30,14 @@ export default function Profile() {
     
 
     return (
-    <div>
+    <div className="profile">
+        
+        <header className="header">
         <h1>Profile Page</h1>
+        <button onClick={handleCheckToken}>Check When Log In Token Expires</button>
+        </header>
+
+
         {profile && (
         <div>
             <h1>{profile.display_name}</h1>
@@ -42,7 +49,7 @@ export default function Profile() {
             )}
         </div>
         )}
-        <button onClick={handleCheckToken}>Check When Log In Token Expires</button>
+        
     </div>
     )
 }

@@ -1,5 +1,12 @@
 import {accessToken, spotifyLogOut} from '../../Spotify/Spotify'
 import { useState, useEffect } from 'react';
+import { StyledLogInButton } from './homestyle';
+
+
+
+
+
+
 
 
 export default function Home() {
@@ -14,30 +21,24 @@ export default function Home() {
     
     
     return(
-    <div>
-        <h1>Spotify Log In</h1>
+    <div className='home'>
+        <h1 className='title'>Spotify Log In</h1>
         
         { !token ? (
             
-        <a
+        <StyledLogInButton className='login'
         href='http://localhost:3001/login2spotify' >
             Log In to Spotify
-        </a> 
+        </StyledLogInButton> 
         
         ) : (
 
             
 
 
-
-
-
-
-
-
         <div>
-            <h1>Logged In</h1> 
-            <button onClick={spotifyLogOut}>Log Out of Spotify</button>
+            <h3 className='status'>Logged In</h3> 
+            <button onClick={spotifyLogOut} className = 'logout'>Log Out of Spotify</button>
         </div>
         )}
         </div>

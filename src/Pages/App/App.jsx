@@ -10,6 +10,7 @@ import TopArtists from '../../Components/SpotifyData/TopArtist/TopArtistPage';
 import TopTracks from '../../Components/SpotifyData/TopTracks/TopTracksPage';
 import IndividualPlaylist from '../../Components/SpotifyData/Playlist/IndividualPlaylist';
 import Playlists from '../../Components/SpotifyData/Playlist/PlaylistsPage';
+import Searchbar from '../../Components/Search/SearchBar';
 
 
 
@@ -44,7 +45,7 @@ function App() {
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/home' element={<Home/>}/> 
           <Route path='/authpage' element={<AuthPage/>}/>
-
+          <Route path='/search' element={<Searchbar/>}/>
           <Route path='/top-artists' element = {<TopArtists/>}/>
           <Route path='/top-tracks' element = {<TopTracks/>} />
           <Route path='/playlists/:id' element = {<IndividualPlaylist/>} />

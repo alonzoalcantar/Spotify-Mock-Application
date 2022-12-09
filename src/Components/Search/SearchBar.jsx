@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { accessToken } from "../../Spotify/Spotify";
 import SpotifyWebApi from "spotify-web-api-node";
 import SearchResult from "./SearchResult";
+import TrackPlayer from "../TrackPlayer/TrackPlayer";
 
 
 const spotifySearchAPI = new SpotifyWebApi({
@@ -63,7 +64,7 @@ export default function Searchbar(){
                     <SearchResult track = {track} key = {track.uri}/>
                 ))}
             </div>
-            <div>Bottom</div>
+            <div><TrackPlayer accessToken={accessToken} /></div>
             </Container>
 
     )

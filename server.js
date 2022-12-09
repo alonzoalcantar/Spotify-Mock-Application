@@ -61,7 +61,11 @@ app.get('/login2spotify', (req,res) => {
     const scope = [
     'user-read-private',
     'user-read-email',
-    'user-top-read'
+    'user-top-read',
+    'user-read-playback-state',
+    'user-library-read',
+    'user-modify-playback-state',
+    'streaming'
     ].join(' ')
 
     const queryParams = querystring.stringify({

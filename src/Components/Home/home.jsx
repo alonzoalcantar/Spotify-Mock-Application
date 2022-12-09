@@ -1,7 +1,7 @@
 import {accessToken, spotifyLogOut} from '../../Spotify/Spotify'
 import { useState, useEffect } from 'react';
-import { StyledLogInButton, StyledLogOutButton } from './homestyle';
-import { StyledLogInPage } from './homestyle';
+import { StyledLogInButton, StyledLogOutButton } from './Homestyle';
+import { StyledLogInPage } from './Homestyle';
 
 
 

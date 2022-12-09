@@ -141,6 +141,10 @@ export const spotifyTopArtists = (time_range = 'short_term') => {
 }
 
 
+export const spotifyTopTracks = (time_range = 'short_term') => {
+    return axios.get(`/me/top/tracks?time_range=${time_range}`);
+};
+
 
 
 

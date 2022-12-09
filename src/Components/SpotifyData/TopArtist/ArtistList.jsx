@@ -1,5 +1,5 @@
 
-import { StyledList } from "./topartiststyle";
+import { StyledList } from "./StyledList";
 
 export default function ArtistList({artists}) {
 

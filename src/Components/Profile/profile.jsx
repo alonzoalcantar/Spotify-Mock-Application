@@ -1,9 +1,10 @@
 
 import { useState, useEffect } from "react";
-import { spotifyProfile, spotifyPlaylists, spotifyTopArtists} from "../../Spotify/Spotify";
-import { StyledHeader} from "./profilestyles";
+import { spotifyProfile, spotifyPlaylists, spotifyTopArtists, spotifyTopTracks} from "../../Spotify/Spotify";
+import { StyledHeader} from "./ProfileStyles";
 import ArtistList from "../SpotifyData/TopArtist/ArtistList";
-import { PageLayout } from "../Style/pagelayout";
+import TopTracksList from "../SpotifyData/TopTracks/TracksList";
+import { PageLayout } from "../Style/PageLayout";
 
 
 export default function Profile() {
@@ -17,6 +18,9 @@ export default function Profile() {
 
     //Spotify Top Artist 
     const [topArtist, setTopArtist] = useState(null);
+
+    //Spotify Top Tracks
+    const [topTrack, setTopTrack] = useState(null);
     
     useEffect(() => {
         
@@ -31,6 +35,11 @@ export default function Profile() {
                 const userTopArtist = await spotifyTopArtists();
                 setTopArtist(userTopArtist.data);
 
+                const userTopTracks = await spotifyTopTracks();
+                setTopTrack(userTopTracks.data);
+
+
+                console.log(userTopTracks.data)
                 console.log(userTopArtist.data)
                 console.log(userProfile.data)
                 console.log(userPlaylist.data)
@@ -74,11 +83,17 @@ export default function Profile() {
           )}
 
 
-          {topArtist && (
+          {topArtist && topTrack && (
             <div>
                 <PageLayout seeAllLink='/top-artists'>
                     <ArtistList artists={topArtist.items.slice(0,10)} />
                 </PageLayout>
+
+                <PageLayout seeAllLink='/top-tracks'>
+                    <TopTracksList tracks = {topTrack.items.slice(0,10)}/>
+                </PageLayout>
+
+
             </div>
           )}
         </>

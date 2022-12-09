@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { StyledLayout } from "./styledlayout";
+import { StyledLayout } from "./StyledLayout";
 
 
 export const PageLayout = ({ children, title, seeAllLink, breadcrumb}) => (

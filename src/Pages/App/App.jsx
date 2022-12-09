@@ -1,11 +1,11 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import { useState, useEffect} from 'react';
-import { GlobalStyle } from '../../Components/Style/globalstyle';
+import { GlobalStyle } from '../../Components/Style/GlobalStyle';
 import AuthPage from '../AuthPage/AuthPage'
-import Home from '../../Components/Home/home'
-import Profile from '../../Components/Profile/profile'
-import Navbar from '../../Components/Navbar/navbar';
+import Home from '../../Components/Home/Home'
+import Profile from '../../Components/Profile/Profile'
+import Navbar from '../../Components/Navbar/Navbar';
 import TopArtists from '../../Components/SpotifyData/TopArtist/ArtistList';
 import TopTracks from '../../Components/SpotifyData/TopTracks/Top-Tracks';
 import IndividualPlaylist from '../../Components/SpotifyData/Playlist/IndividualPlaylist';

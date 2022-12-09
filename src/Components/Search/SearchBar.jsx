@@ -3,6 +3,7 @@ import { Container, Form } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { accessToken } from "../../Spotify/Spotify";
 import SpotifyWebApi from "spotify-web-api-node";
+import SearchResult from "./SearchResult";
 
 
 const spotifySearchAPI = new SpotifyWebApi({
@@ -14,7 +15,7 @@ export default function Searchbar(){
 
     const [search , setSearch] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    console.log(searchResults)
+
 
     useEffect(() => {
         if(!accessToken) return
@@ -27,8 +28,10 @@ export default function Searchbar(){
     useEffect(() => {
         if(!search) return setSearchResults([])
         if(!accessToken) return 
-
+        let cancelSearch = false
         spotifySearchAPI.searchTracks(search).then(res =>{
+            if (cancelSearch) return
+
             setSearchResults(res.body.tracks.items.map(track => {
                 //gets smallest image
                 const albumImage = track.album.images.reduce(
@@ -45,8 +48,8 @@ export default function Searchbar(){
                 }
             }))
         })
+        return() => cancelSearch = true
     },[search, accessToken])
-
 
     return(
 
@@ -56,7 +59,9 @@ export default function Searchbar(){
             value = {search}
             onChange = {event => setSearch(event.target.value)}/>
             <div className='= flex-frow-1 my-2' style = {{overflowY: 'auto'}}>
-                Songs
+                {searchResults.map(track =>(
+                    <SearchResult track = {track} key = {track.uri}/>
+                ))}
             </div>
             <div>Bottom</div>
             </Container>

@@ -16,6 +16,13 @@ export default function Searchbar(){
 
     const [search , setSearch] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+    const [currentTrack, setCurrentTrack] = useState()
+
+
+    function selectTrack(track){
+        setCurrentTrack(track)
+        setSearch('')
+    }
 
 
     useEffect(() => {
@@ -61,10 +68,10 @@ export default function Searchbar(){
             onChange = {event => setSearch(event.target.value)}/>
             <div className='= flex-frow-1 my-2' style = {{overflowY: 'auto'}}>
                 {searchResults.map(track =>(
-                    <SearchResult track = {track} key = {track.uri}/>
+                    <SearchResult track = {track} key = {track.uri} selectTrack={selectTrack}/>
                 ))}
             </div>
-            <div><TrackPlayer accessToken={accessToken} /></div>
+            <div><TrackPlayer accessToken={accessToken} trackUri={currentTrack?.uri} /></div>
             </Container>
 
     )

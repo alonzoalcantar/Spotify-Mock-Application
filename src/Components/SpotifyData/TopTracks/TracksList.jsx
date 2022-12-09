@@ -12,8 +12,8 @@ export default function TopTracksList ({tracks}){
 
 
     return(
-        <>
-        <h1>Top Tracks</h1>
+        <div>
+        <h1>Top Tracks this Month</h1>
         {tracks && tracks.length ? (
           <StyledTrackList>
             {tracks.map((track, idx) => (
@@ -50,6 +50,6 @@ export default function TopTracksList ({tracks}){
         ) : (
           <p className="empty">No tracks available</p>
         )}
-      </>
+      </div>
     );
         }    

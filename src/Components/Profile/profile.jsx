@@ -5,6 +5,7 @@ import { StyledHeader} from "./ProfileStyles";
 import ArtistList from "../SpotifyData/TopArtist/ArtistList";
 import TopTracksList from "../SpotifyData/TopTracks/TracksList";
 import { PageLayout } from "../Style/PageLayout";
+import PlaylistList from "../SpotifyData/Playlist/PlaylistList";
 
 
 export default function Profile() {
@@ -83,7 +84,7 @@ export default function Profile() {
           )}
 
 
-          {topArtist && topTrack && (
+          {topArtist && topTrack && playlist && (
             <div>
                 <PageLayout seeAllLink='/top-artists'>
                     <ArtistList artists={topArtist.items.slice(0,10)} />
@@ -91,6 +92,10 @@ export default function Profile() {
 
                 <PageLayout seeAllLink='/top-tracks'>
                     <TopTracksList tracks = {topTrack.items.slice(0,10)}/>
+                </PageLayout>
+
+                <PageLayout seeAllLink='/playlists'>
+                    <PlaylistList playlists={playlist.items.slice(0,10)} />
                 </PageLayout>
 
 

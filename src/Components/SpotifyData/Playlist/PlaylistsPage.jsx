@@ -55,7 +55,7 @@ export default function PlaylistsPage() {
  
 }, [playlistData]);
 
-//React strict mode???^^
+//React strict mode???^^ paging through an array 
 
 
 

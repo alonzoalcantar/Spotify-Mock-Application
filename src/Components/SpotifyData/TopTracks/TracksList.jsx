@@ -13,7 +13,7 @@ export default function TopTracksList ({tracks}){
 
     return(
         <div>
-        <h1>Top Tracks this Month</h1>
+        <h1>Top Tracks </h1>
         {tracks && tracks.length ? (
           <StyledTrackList>
             {tracks.map((track, idx) => (

@@ -6,10 +6,10 @@ import AuthPage from '../AuthPage/AuthPage'
 import Home from '../../Components/Home/home'
 import Profile from '../../Components/Profile/profile'
 import Navbar from '../../Components/Navbar/navbar';
-import TopArtists from '../../Components/SpotifyData/Top-Artists';
-import TopTracks from '../../Components/SpotifyData/Top-Tracks';
-import IndividualPlaylist from '../../Components/SpotifyData/IndividualPlaylist';
-import Playlists from '../../Components/SpotifyData/Playlists';
+import TopArtists from '../../Components/SpotifyData/TopArtist/ArtistList';
+import TopTracks from '../../Components/SpotifyData/TopTracks/Top-Tracks';
+import IndividualPlaylist from '../../Components/SpotifyData/Playlist/IndividualPlaylist';
+import Playlists from '../../Components/SpotifyData/Playlist/Playlists';
 
 
 
@@ -39,7 +39,7 @@ function App() {
         setUser = {setUser}/> 
         <Routes>
 
-          {/* <Route path='/spotify' element={<SpotifyLogInForm/>}/> */}
+
           <Route path='/' element={<Home />}/>
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/home' element={<Home/>}/> 

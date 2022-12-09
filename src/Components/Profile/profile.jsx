@@ -1,7 +1,9 @@
 
 import { useState, useEffect } from "react";
-import { spotifyProfile } from "../../Spotify/Spotify";
+import { spotifyProfile, spotifyPlaylists, spotifyTopArtists} from "../../Spotify/Spotify";
 import { StyledHeader} from "./profilestyles";
+import ArtistList from "../SpotifyData/TopArtist/ArtistList";
+import { PageLayout } from "../Style/pagelayout";
 
 
 export default function Profile() {
@@ -9,14 +11,29 @@ export default function Profile() {
 
     //Spotify Profile 
     const [profile, setProfile] = useState(null);
+
+    //Spotify Playlist 
+    const [playlist, setPlaylist] = useState(null);
+
+    //Spotify Top Artist 
+    const [topArtist, setTopArtist] = useState(null);
     
     useEffect(() => {
         
         const returnProfileData = async () => {
             try {
-                const {data} = await spotifyProfile();
-                setProfile(data);
-                console.log(data)
+                const userProfile = await spotifyProfile();
+                setProfile(userProfile.data);
+
+                const userPlaylist = await spotifyPlaylists();
+                setPlaylist(userPlaylist.data);
+
+                const userTopArtist = await spotifyTopArtists();
+                setTopArtist(userTopArtist.data);
+
+                console.log(userTopArtist.data)
+                console.log(userProfile.data)
+                console.log(userPlaylist.data)
             } catch (err) {
                 console.error(err);
             }
@@ -40,14 +57,29 @@ export default function Profile() {
                     <div className="header_overline">Profile</div>
                     <h1 className="header_name">{profile.display_name}</h1>
                     <p className="header_meta">
-                      <span>
+                        {playlist && (
+                        <span>
+                            {playlist.total} Playlist{playlist.total !== 1 ? 's' : ''}
+                        </span>
+                        )}
+                        &nbsp; | &nbsp;
+                        <span>
                         {profile.followers.total} Follower{profile.followers.total !== 1 ? 's' : ''}
-                      </span>
+                        </span>
                     </p>
                   </div>
                 </div>
               </StyledHeader>
             </>
+          )}
+
+
+          {topArtist && (
+            <div>
+                <PageLayout seeAllLink='/top-artists'>
+                    <ArtistList artists={topArtist.items.slice(0,10)} />
+                </PageLayout>
+            </div>
           )}
         </>
       )

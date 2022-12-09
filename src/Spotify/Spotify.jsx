@@ -127,6 +127,19 @@ axios.defaults.headers['Content-Type'] = 'application/json';
 export const spotifyProfile = () => axios.get('/me');
 
 
+//Return logged in user Playlist 
+
+export const spotifyPlaylists = (limit = 20) => {
+    return axios.get(`/me/playlists?limit=${limit}`);
+}
+
+
+//Return user Top Artisits Data
+
+export const spotifyTopArtists = (time_range = 'short_term') => {
+    return axios.get(`/me/top/artists?time_range=${time_range}`);
+}
+
 
 
 

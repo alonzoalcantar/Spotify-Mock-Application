@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom"
 import * as userService from '../../utilities/users-service';
-import { Container, Form } from "react-bootstrap";
-import { useState } from "react";
+
 
 export default function Navbar({user, setUser}){
 
 
 
 
-    const [search , setSearch] = useState('');
 
     function handleLogout() {
         userService.logOut();

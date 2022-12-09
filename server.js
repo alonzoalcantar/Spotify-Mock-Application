@@ -4,6 +4,8 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const querystring = require('querystring');
 const axios = require('axios');
+const lyricsFinder = require('lyrics-finder');
+const bodyParser = require('body-parser');
 
 
 
@@ -26,6 +28,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
 
 app.use(require('./config/checkToken'));
@@ -150,6 +154,12 @@ app.get('/refresh_token',(req,res) => {
         res.send(error);
     });
 } );
+
+
+app.get('/lyrics', async(req,res) => {
+    const lyrics = await lyricsFinder(req.query.artist, req.query.track) || 'No Lyrics Can Be Found'
+    res.json({lyrics})
+})
 
 
 // "catch-all" route that will match all GET requests

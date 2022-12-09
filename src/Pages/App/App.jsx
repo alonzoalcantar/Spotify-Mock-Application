@@ -1,6 +1,6 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
-import { useState, useEffect} from 'react';
+import { useState } from 'react';
 import { GlobalStyle } from '../../Components/Style/GlobalStyle';
 import AuthPage from '../AuthPage/AuthPage'
 import Home from '../../Components/Home/Home'

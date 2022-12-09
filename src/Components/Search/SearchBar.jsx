@@ -5,6 +5,7 @@ import { accessToken } from "../../Spotify/Spotify";
 import SpotifyWebApi from "spotify-web-api-node";
 import SearchResult from "./SearchResult";
 import TrackPlayer from "../TrackPlayer/TrackPlayer";
+import axios from "axios";
 
 
 const spotifySearchAPI = new SpotifyWebApi({
@@ -17,18 +18,34 @@ export default function Searchbar(){
     const [search , setSearch] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [currentTrack, setCurrentTrack] = useState()
+    const [lyrics, setLyrics] = useState('')
 
 
     function selectTrack(track){
         setCurrentTrack(track)
         setSearch('')
+        setLyrics('')
     }
+
+
+    useEffect(() =>{
+        if(!currentTrack) return
+
+        axios.get('http://localhost:3001/lyrics',{
+            params: {
+                track: currentTrack.title,
+                artist: currentTrack.artist
+            }
+        }).then(res => {
+            setLyrics(res.data.lyrics)
+        })
+    })
 
 
     useEffect(() => {
         if(!accessToken) return
         spotifySearchAPI.setAccessToken(accessToken)
-    },[accessToken])
+    },[])
 
 
 
@@ -57,7 +74,7 @@ export default function Searchbar(){
             }))
         })
         return() => cancelSearch = true
-    },[search, accessToken])
+    },[search])
 
     return(
 
@@ -70,6 +87,12 @@ export default function Searchbar(){
                 {searchResults.map(track =>(
                     <SearchResult track = {track} key = {track.uri} selectTrack={selectTrack}/>
                 ))}
+
+                {searchResults.length === 0 && (
+                    <div className="text-center" style={{whiteSpace: 'pre'}}>
+                        {lyrics}
+                    </div>
+                )}
             </div>
             <div><TrackPlayer accessToken={accessToken} trackUri={currentTrack?.uri} /></div>
             </Container>

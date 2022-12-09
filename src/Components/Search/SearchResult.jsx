@@ -11,7 +11,7 @@ export default function SearchResult({track, selectTrack}) {
         className='d-flex m-2 align-items-center' 
         style={{cursor: 'pointer'} }
         onClick={playSong}>
-            <img src={track.albumUrl} style={{ height: '70px', width: '70px'}}/>
+            <img src={track.albumUrl} style={{ height: '70px', width: '70px'}} alt='album_image'/>
             <div>{track.title}</div>
             <div>{track.artist}</div>
         </div>

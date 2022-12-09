@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState, useMemo } from "react";
 import { useParams } from "react-router-dom"
-import { spotifyIndividualPlaylist } from "../../../Spotify/Spotify";
+import { spotifyIndividualPlaylist, spotifyAudioFeatures } from "../../../Spotify/Spotify";
 import { StyledHeader } from "../../Profile/ProfileStyles"
 import { PageLayout } from "../../Style/PageLayout";
 import TopTracksList from "../TopTracks/TracksList";
@@ -17,7 +17,7 @@ export default function IndividualPlaylist() {
     const [playlist, setPlaylist] = useState(null);
     const [tracksData, setTracksData] = useState(null);
     const [tracks, setTracks] = useState(null);
-
+    const [audioFeatures, setAudioFeatures] = useState(null);
 
 
     useEffect(() => {
@@ -29,6 +29,9 @@ export default function IndividualPlaylist() {
 
         returnProfileData();
     }, [id]);
+
+
+
 
 
     useEffect(() => {
@@ -44,7 +47,7 @@ export default function IndividualPlaylist() {
             }
         };
 
-
+        returnMoreData()
 
 
         setTracks(tracks => ([
@@ -52,7 +55,21 @@ export default function IndividualPlaylist() {
             ...tracksData.items
         ]));
 
-        returnMoreData();
+
+
+        const returnAudioFeatures = async () => {
+            const ids = tracksData.items.map(({track}) => track.id).join(',');
+            const {data} = await spotifyAudioFeatures(ids);
+            setAudioFeatures(audioFeatures => ([
+                ...audioFeatures ? audioFeatures : [],
+                ...data['audio_features']
+            ]));
+        };
+
+        returnAudioFeatures()
+
+
+
     }, [tracksData]);
 
 
@@ -65,8 +82,7 @@ export default function IndividualPlaylist() {
       }, [tracks]);
     
 
-
-
+console.log(audioFeatures)
 
     return(
         <div>

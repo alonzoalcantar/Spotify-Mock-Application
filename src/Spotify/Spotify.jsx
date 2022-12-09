@@ -140,15 +140,22 @@ export const spotifyTopArtists = (time_range = 'short_term') => {
     return axios.get(`/me/top/artists?time_range=${time_range}`);
 }
 
-
+//Returns users Most Played Track Data 
 export const spotifyTopTracks = (time_range = 'short_term') => {
     return axios.get(`/me/top/tracks?time_range=${time_range}`);
 };
+
+
+//Returns users Individual Playlist Data
 export const spotifyIndividualPlaylist = playlist_id => {
     return axios.get(`playlists/${playlist_id}`);
 }
 
 
+//Returns song audio category data
+export const spotifyAudioFeatures = ids => {
+    return axios.get(`/audio-features?ids=${ids}`);
+}
 
 
 

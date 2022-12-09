@@ -75,14 +75,31 @@ export default function IndividualPlaylist() {
 
 
     const tracksFromPlaylist = useMemo(() => {
-        if (!tracks) {
-          return;
+        if (!tracks || !audioFeatures) {
+          return null;
         }
-        return tracks.map(({ track }) => track);
-      }, [tracks]);
+        return tracks.map(({ track }) => {
+            const addTrack = track;
+
+            if(!track.audio_features) {
+                const audioFeaturesObject = audioFeatures.find(item => {
+                    if(!item || !track) {
+                        return null;
+                    }
+                    return item.id === track.id;
+                });
+
+            addTrack['audio_features'] = audioFeaturesObject;
+            }
+
+            return addTrack;
+        });
+
+
+      }, [tracks, audioFeatures]);
     
 
-console.log(audioFeatures)
+console.log(tracksFromPlaylist)
 
     return(
         <div>

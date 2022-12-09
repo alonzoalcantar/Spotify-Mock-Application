@@ -11,7 +11,7 @@ export const PageLayout = ({ children, title, seeAllLink, breadcrumb}) => (
                 <h2 className = 'layout_heading'>
                     {breadcrumb && (
                         <span className = 'layout_breadcrumb'>
-                            <Link to = '/'>Profile</Link>
+                            <Link to = '/profile'>Profile</Link>
                         </span>
                     )}
 

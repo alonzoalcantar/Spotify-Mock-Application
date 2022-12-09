@@ -2,9 +2,9 @@
 import { useState, useEffect } from "react";
 import { spotifyProfile, spotifyPlaylists, spotifyTopArtists, spotifyTopTracks} from "../../Spotify/Spotify";
 import { StyledHeader} from "./ProfileStyles";
+import { PageLayout } from "../Style/PageLayout";
 import ArtistList from "../SpotifyData/TopArtist/ArtistList";
 import TopTracksList from "../SpotifyData/TopTracks/TracksList";
-import { PageLayout } from "../Style/PageLayout";
 import PlaylistList from "../SpotifyData/Playlist/PlaylistList";
 
 

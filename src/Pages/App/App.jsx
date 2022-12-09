@@ -6,10 +6,10 @@ import AuthPage from '../AuthPage/AuthPage'
 import Home from '../../Components/Home/Home'
 import Profile from '../../Components/Profile/Profile'
 import Navbar from '../../Components/Navbar/Navbar';
-import TopArtists from '../../Components/SpotifyData/TopArtist/ArtistList';
-import TopTracks from '../../Components/SpotifyData/TopTracks/Top-Tracks';
+import TopArtists from '../../Components/SpotifyData/TopArtist/TopArtistPage';
+import TopTracks from '../../Components/SpotifyData/TopTracks/TopTracksPage';
 import IndividualPlaylist from '../../Components/SpotifyData/Playlist/IndividualPlaylist';
-import Playlists from '../../Components/SpotifyData/Playlist/Playlists';
+import Playlists from '../../Components/SpotifyData/Playlist/PlaylistsPage';
 
 
 

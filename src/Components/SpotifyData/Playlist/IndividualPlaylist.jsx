@@ -18,6 +18,8 @@ export default function IndividualPlaylist() {
     const [tracksData, setTracksData] = useState(null);
     const [tracks, setTracks] = useState(null);
     const [audioFeatures, setAudioFeatures] = useState(null);
+    const [sortPlaylist, setSortPlaylist] = useState('');
+    const selectSort = ['danceability', 'tempo', 'energy'];
 
 
     useEffect(() => {
@@ -97,6 +99,25 @@ export default function IndividualPlaylist() {
 
 
       }, [tracks, audioFeatures]);
+
+
+      const sortedPlaylist = useMemo(() => {
+        if(!tracksFromPlaylist) {
+            return null;
+        }
+
+        return [...tracksFromPlaylist].sort((first, second) => {
+            const firstFeature = first['audio_features'];
+            const secondFeature = second['audio_features'];
+
+            if(!firstFeature || !secondFeature) {
+                return false;
+            }
+
+            return secondFeature[sortPlaylist] - firstFeature[sortPlaylist];
+
+        });
+      }, [sortPlaylist, tracksFromPlaylist])
     
 
 console.log(tracksFromPlaylist)
@@ -125,8 +146,26 @@ console.log(tracksFromPlaylist)
 
                         <div>
                         <PageLayout breadcrumb='true'>
-                            {tracksFromPlaylist && (
-                                <TopTracksList tracks = {tracksFromPlaylist} />
+                                
+                            <div>
+                                <label className='sort_playlist'>Sort Tracks: </label>
+                                <select
+                                id= 'sort_method'
+                                onChange={event =>setSortPlaylist(event.target.value)}>
+                                    <option value=''>Sort Tracks</option>
+                                    {selectSort.map((select, idx) =>(
+                                        <option value={select} key={idx}>
+                                            {`${select.charAt(0).toUpperCase()}${select.slice(1)}`}
+                                        </option>
+                                    ))}
+
+                                </select>
+                            </div>
+
+
+
+                            {sortedPlaylist && (
+                                <TopTracksList tracks = {sortedPlaylist} />
                             )}
                         </PageLayout>
 

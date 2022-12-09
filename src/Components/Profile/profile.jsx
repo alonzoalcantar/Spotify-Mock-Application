@@ -39,11 +39,6 @@ export default function Profile() {
                 const userTopTracks = await spotifyTopTracks();
                 setTopTrack(userTopTracks.data);
 
-
-                console.log(userTopTracks.data)
-                console.log(userTopArtist.data)
-                console.log(userProfile.data)
-                console.log(userPlaylist.data)
             } catch (err) {
                 console.error(err);
             }

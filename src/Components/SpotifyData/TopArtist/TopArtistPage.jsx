@@ -41,7 +41,7 @@ export default function TopArtistPage () {
                 setHistoryRange = {setHistoryRange}/>
 
 
-                <ArtistList artists={topArtist.items.slice(0,10)} />
+                <ArtistList artists={topArtist.items} />
             </PageLayout>
             )}
         </div>

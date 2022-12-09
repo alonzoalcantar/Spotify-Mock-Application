@@ -41,7 +41,7 @@ export default function TopTracksPage () {
                 setHistoryRange = {setHistoryRange}/>
 
 
-                <TopTracksList tracks={topTrack.items.slice(0,10)} />
+                <TopTracksList tracks={topTrack.items} />
             </PageLayout>
             )}
         </div>

@@ -17,11 +17,9 @@ export default function Navbar({user, setUser}){
             &nbsp; | &nbsp;
             <Link to='/profile'>Profile</Link>
             &nbsp; | &nbsp;
-            <Link to='/top-artists'>Top Artists</Link>
+            <Link to = '' onClick={handleLogout}>Log Out </Link>
             &nbsp; | &nbsp;
             <p>Welcome: {user.name}</p> 
-            &nbsp; | &nbsp;
-            <Link to = '' onClick={handleLogout}>Log Out </Link>
         </nav>
     )
 }

@@ -3,6 +3,7 @@ import { useEffect, useState, useMemo } from "react";
 import { useParams } from "react-router-dom"
 import { spotifyIndividualPlaylist, spotifyAudioFeatures } from "../../../Spotify/Spotify";
 import { StyledHeader } from "../../Profile/ProfileStyles"
+import { StyledSelectDropDown } from "../../SelectDropDown/StyledSelectDropDown";
 import { PageLayout } from "../../Style/PageLayout";
 import TopTracksList from "../TopTracks/TracksList";
 
@@ -147,7 +148,7 @@ console.log(tracksFromPlaylist)
                         <div>
                         <PageLayout breadcrumb='true'>
                                 
-                            <div>
+                            <StyledSelectDropDown active = {!!sortPlaylist}>
                                 <label className='sort_playlist'>Sort Tracks: </label>
                                 <select
                                 id= 'sort_method'
@@ -160,7 +161,7 @@ console.log(tracksFromPlaylist)
                                     ))}
 
                                 </select>
-                            </div>
+                            </StyledSelectDropDown>
 
 
 

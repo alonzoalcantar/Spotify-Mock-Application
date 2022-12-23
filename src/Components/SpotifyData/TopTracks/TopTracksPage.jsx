@@ -1,7 +1,7 @@
 
 import { useState , useEffect} from "react";
 import { spotifyTopTracks } from "../../../Spotify/Spotify";
-import { PageLayout } from "../../Style/PageLayout";
+import { PageLayout } from "../../../Style/PageLayout";
 import HistoryRangeButton from "../Button/HistoryRangeButton";
 import TopTracksList from "./TracksList";
 

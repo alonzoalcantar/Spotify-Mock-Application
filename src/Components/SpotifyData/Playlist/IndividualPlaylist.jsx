@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import { spotifyIndividualPlaylist, spotifyAudioFeatures } from "../../../Spotify/Spotify";
 import { StyledHeader } from "../../Profile/ProfileStyles"
 import { StyledSelectDropDown } from "../../SelectDropDown/StyledSelectDropDown";
-import { PageLayout } from "../../Style/PageLayout";
+import { PageLayout } from "../../../Style/PageLayout";
 import TopTracksList from "../TopTracks/TracksList";
 
 

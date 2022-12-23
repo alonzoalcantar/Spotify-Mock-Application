@@ -1,4 +1,4 @@
-import { PageLayout } from "../../Style/PageLayout"
+import { PageLayout } from "../../../Style/PageLayout"
 import { useEffect, useState } from "react";
 import { spotifyPlaylists } from "../../../Spotify/Spotify";
 import PlaylistList from "./PlaylistList"

@@ -14,16 +14,6 @@ import Searchbar from '../../Components/Search/SearchBar';
 
 
 
-// function ScrollToTop() {
-//   const {pathname} = useLocation();
-
-//   useEffect(() => {
-//     window.scrollTo(0,0);
-//   },[pathname]);
-//   return null
-// }
-
-
 function App() {
   //Application User
   const [user, setUser]= useState(getUser());

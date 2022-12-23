@@ -5,7 +5,7 @@ import { StyledHeader} from "./ProfileStyles";
 import { PageLayout } from "../Style/PageLayout";
 import ArtistList from "../SpotifyData/TopArtist/ArtistList";
 import TopTracksList from "../SpotifyData/TopTracks/TracksList";
-import PlaylistList from "../SpotifyData/Playlist/PlaylistList";
+import PlaylistList from "../Pages/SpotifyData/TopArtist/ArtistList";
 
 
 export default function Profile() {

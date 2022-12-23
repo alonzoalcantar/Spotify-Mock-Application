@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import { spotifyProfile, spotifyPlaylists, spotifyTopArtists, spotifyTopTracks} from "../Spotify/Spotify";
 import { StyledHeader} from "./ProfileStyles";
 import { PageLayout } from "../Style/PageLayout";
-import ArtistList from "../SpotifyData/TopArtist/ArtistList";
-import TopTracksList from "../SpotifyData/TopTracks/TracksList";
-import PlaylistList from "../Pages/SpotifyData/TopArtist/ArtistList";
+import ArtistList from "../Pages/SpotifyData/TopArtist/ArtistList";
+import TopTracksList from "../Pages/SpotifyData/TopTracks/TracksList";
+import PlaylistList from "../Pages/SpotifyData/Playlist/PlaylistList";
 
 
 export default function Profile() {

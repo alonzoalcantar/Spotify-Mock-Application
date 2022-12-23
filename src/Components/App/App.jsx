@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { GlobalStyle } from '../../Style/GlobalStyle';
 import AuthPage from '../AuthPage/AuthPage'
 import Home from '../../Home/Home'
-import Profile from '../Profile/Profile'
+import Profile from '../../Profile/Profile'
 import Navbar from '../Navbar/Navbar';
 import TopArtists from '../SpotifyData/TopArtist/TopArtistPage';
 import TopTracks from '../SpotifyData/TopTracks/TopTracksPage';

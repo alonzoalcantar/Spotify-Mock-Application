@@ -29,7 +29,7 @@ export default function Home() {
         { !token ? (
             
         <StyledLogInButton className='login'
-        href='http://localhost:3001/login2spotify' >
+        href='https://thawing-bayou-17998.herokuapp.com/login2spotify' >
             Log In to Spotify
         </StyledLogInButton> 
         

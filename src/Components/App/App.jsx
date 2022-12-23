@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import { useState } from 'react';
 import { GlobalStyle } from '../Style/GlobalStyle';
-import AuthPage from '../../Pages/AuthPage/AuthPage'
+import AuthPage from '../AuthPage/AuthPage'
 import Home from '../Home/Home'
 import Profile from '../Profile/Profile'
 import Navbar from '../Navbar/Navbar';

@@ -26,7 +26,7 @@ Trello Board : https://trello.com/b/8cAaJDJ6/spotify-mock-application
 
 ## Deploy Application
 
-To be determined.....
+https://thawing-bayou-17998.herokuapp.com/
 
 ### Technologies Used
 
